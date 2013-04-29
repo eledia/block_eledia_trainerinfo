@@ -1,0 +1,5 @@
+.block_eledia_trainerinfo img.profilepicture { height:100px; width:100px; text-align:center; float: none}
+.block_eledia_trainerinfo .eledia_trainerinfoitem.fullname {font-size:1.0em;}
+.block_eledia_trainerinfo .eledia_trainerinfoitem.edit {text-align: right;}
+.block_eledia_trainerinfo .content .userinfo { text-align:left; clear:both}
+
