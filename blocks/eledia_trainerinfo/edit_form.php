@@ -14,8 +14,17 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-defined('MOODLE_INTERNAL') || die();
+/**
+ * Edit the block instance.
+ *
+ * @package    block
+ * @subpackage eledia_course_trainerinfo
+ * @author     Benjamin Wolf <support@eledia.de>
+ * @copyright  2013 eLeDia GmbH
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 
+defined('MOODLE_INTERNAL') || die();
 
 class block_eledia_trainerinfo_edit_form extends block_edit_form {
     protected function specific_definition($mform) {
@@ -28,6 +37,6 @@ class block_eledia_trainerinfo_edit_form extends block_edit_form {
         } else {
             $mform->setDefault('config_display_picture', '1');
         }
-    
+
     }
 }

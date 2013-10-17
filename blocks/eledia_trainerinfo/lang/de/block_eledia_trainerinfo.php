@@ -14,6 +14,16 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+/**
+ * De language file for the plugin.
+ *
+ * @package    block
+ * @subpackage eledia_course_trainerinfo
+ * @author     Benjamin Wolf <support@eledia.de>
+ * @copyright  2013 eLeDia GmbH
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
 $string['eledia_trainerinfo:addinstance'] = 'Refernten Block hinzufügen';
 $string['eledia_trainerinfo_settings'] = 'Sichtbare Profileinstellungen';
 $string['configure_eledia_trainerinfo_role_course_title'] = 'Referenten Rolle';

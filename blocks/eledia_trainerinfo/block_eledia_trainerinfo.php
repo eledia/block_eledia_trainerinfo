@@ -14,6 +14,15 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+/**
+ * Block Definition. The Block contains information about the course trainers.
+ *
+ * @package    block
+ * @subpackage eledia_course_trainerinfo
+ * @author     Benjamin Wolf <support@eledia.de>
+ * @copyright  2013 eLeDia GmbH
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 
 defined('MOODLE_INTERNAL') || die();
 
@@ -30,8 +39,8 @@ class block_eledia_trainerinfo extends block_base {
      *
      * @return array
      */
-    function applicable_formats() {
-        return array('course'=>true);
+    public function applicable_formats() {
+        return array('course' => true);
     }
 
     /**
@@ -42,55 +51,59 @@ class block_eledia_trainerinfo extends block_base {
     public function get_content() {
         global $CFG, $USER, $DB, $OUTPUT, $PAGE;
 
-        if ($this->content !== NULL) {
+        if ($this->content !== null) {
             return $this->content;
         }
-
-//        if (!isloggedin() or isguestuser()) {
-//            return '';      // Never useful unless you are logged in as real users
-//        }
 
         $this->content = new stdClass;
         $this->content->text = '';
         $this->content->footer = '';
 
-        //get course user with choosen role
+        // Get course user with choosen role.
         $course = $this->page->course;
         $context = context_course::instance($course->id);
-        $user_enrolments = $DB->get_records('role_assignments', array('roleid' => $CFG->block_eledia_trainerinfo_role_course, 'contextid' => $context->id));
-        if(!empty($user_enrolments)){
+        $user_enrolments = $DB->get_records('role_assignments',
+                array('roleid' => $CFG->block_eledia_trainerinfo_role_course,
+                    'contextid' => $context->id));
+        if (!empty($user_enrolments)) {
             $userlist = array();
             foreach ($user_enrolments as $user_enrolment) {
                 $userlist[] = $DB->get_record('user', array('id' => $user_enrolment->userid));
             }
         }
 
-        //loop through user list
-        if(!empty($userlist)){
+        // Loop through user list.
+        if (!empty($userlist)) {
             foreach ($userlist as $user) {
 
                 if (!isset($this->config->display_picture) || $this->config->display_picture == 1) {
-//                    $this->content->text .= '<div class="eledia_trainerinfoitem picture">';
-                    $this->content->text .= $OUTPUT->user_picture($user, array('courseid'=>$course->id, 'size'=>'100', 'class'=>'profilepicture', 'float' => 'none'));  // The new class makes CSS easier , 'align' => 'center'
-                    //
-//                    $this->content->text .= '</div>';
+                    $this->content->text .= $OUTPUT->user_picture($user,
+                            array('courseid' => $course->id,
+                                'size' => '100',
+                                'class' => 'profilepicture',
+                                'float' => 'none'));  // The new class makes CSS easier , 'align' => 'center'.
+
                 }
                 $this->content->text .= '<div class="userinfo">';
                 $this->content->text .= '<strong>'.$user->firstname.' '.$user->lastname.'</strong><br />';
-                if($user->department){
+                if ($user->department) {
                     $this->content->text .= $user->department.'<br />';
                 }
-                if($user->institution){
+                if ($user->institution) {
                     $this->content->text .= $user->institution.'<br />';
                 }
-                if($user->city){
+                if ($user->city) {
                     $this->content->text .= $user->city.'<br />';
                 }
-                if($user->email){
-                    $this->content->text .= '<a href="mailto:'.$user->email.'" target="_blank">'.get_string('mailstring', 'block_eledia_trainerinfo').'</a><br />';
+                if ($user->email) {
+                    $this->content->text .= '<a href="mailto:'.
+                            $user->email.
+                            '" target="_blank">'.
+                            get_string('mailstring', 'block_eledia_trainerinfo').
+                            '</a><br />';
                 }
                 $this->content->text .= '<hr>';
-              $this->content->text .= '</div>';
+                $this->content->text .= '</div>';
             }
         }
         return $this->content;
@@ -104,64 +117,4 @@ class block_eledia_trainerinfo extends block_base {
     public function has_config() {
         return true;
     }
-
-    /**
-     * allow more than one instance of the block on a page
-     *
-     * @return boolean
-     */
-    public function instance_allow_multiple() {
-        //allow more than one instance on a page
-        return false;
-    }
-
-    /**
-     * allow instances to have their own configuration
-     *
-     * @return boolean
-     */
-    function instance_allow_config() {
-        //allow instances to have their own configuration
-        return false;
-    }
-
-    /**
-     * instance specialisations (must have instance allow config true)
-     *
-     */
-    public function specialization() {
-    }
-
-    /**
-     * displays instance configuration form
-     *
-     * @return boolean
-     */
-    function instance_config_print() {
-        return false;
-
-        /*
-        global $CFG;
-
-        $form = new block_eledia_trainerinfo.phpConfigForm(null, array($this->config));
-        $form->display();
-
-        return true;
-        */
-    }
-
-    /**
-     * post install configurations
-     *
-     */
-    public function after_install() {
-    }
-
-    /**
-     * post delete configurations
-     *
-     */
-    public function before_delete() {
-    }
-
 }

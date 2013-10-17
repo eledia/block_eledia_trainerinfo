@@ -19,4 +19,3 @@ required changes in code:
 * use 'pluginname' lang pack identifier instead of 'blockname'
 * move cron and version number into standard version.php
 * removed support for old config_global.html, use settings.php
-

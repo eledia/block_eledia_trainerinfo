@@ -14,6 +14,16 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+/**
+ * En language file for the plugin.
+ *
+ * @package    block
+ * @subpackage eledia_course_trainerinfo
+ * @author     Benjamin Wolf <support@eledia.de>
+ * @copyright  2013 eLeDia GmbH
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
 $string['eledia_trainerinfo:addinstance'] = 'add referenten block';
 $string['eledia_trainerinfo_settings'] = 'Visible user information';
 $string['configure_eledia_trainerinfo_role_course_title'] = 'Referee role';
@@ -22,5 +32,3 @@ $string['contentsettings'] = 'Display settings for content region';
 $string['display_picture'] = 'Display picture';
 $string['mailstring'] = 'contact via e-mail';
 $string['pluginname'] = 'Referee of this Course';
-
-
