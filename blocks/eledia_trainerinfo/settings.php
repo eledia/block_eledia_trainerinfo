@@ -28,7 +28,10 @@ defined('MOODLE_INTERNAL') || die;
 
 if ($ADMIN->fulltree) {
     global $DB;
-    $roles = $DB->get_records('role');
+    $roles = get_roles_for_contextlevels(CONTEXT_COURSE);
+    list($qrypart, $params_part) = $DB->get_in_or_equal($roles);
+    $sql = "SELECT * FROM {role} WHERE id $qrypart";
+    $roles = $DB->get_records_sql($sql, $params_part);
     $roles = role_fix_names($roles);
     $params = array();
     foreach ($roles as $role) {
