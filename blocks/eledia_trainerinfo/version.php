@@ -28,6 +28,6 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin->version   = 2013082100;        // The current plugin version (Date: YYYYMMDDXX).
 $plugin->release = '0.1 (2013082100)';
-$plugin->requires  = 2013050100;        // Requires this Moodle version.
+$plugin->requires  = 2013101800;        // Requires this Moodle version.
 $plugin->component = 'block_eledia_trainerinfo'; // Full name of the plugin (used for diagnostics).
 $plugin->maturity = MATURITY_STABLE;
