@@ -1,4 +1,4 @@
-This plugin provides inforamtion about users with a configurable role(by default the trainer) in a block in the course.
+This plugin provides information about users with a configurable role(by default the trainer) in a block in the course.
 
 Installation:
 To install the plugin just copy the folder "eledia_trainerinfo" into moodle/blocks/.
