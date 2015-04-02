@@ -34,4 +34,6 @@ function xmldb_block_eledia_trainerinfo_install() {
         $DB->update_record('block_instances', $instance);
     }
 
+    $config = get_config('core', 'block_eledia_referenten_role_course');
+    set_config('block_eledia_trainerinfo_role_course', $config);
 }
