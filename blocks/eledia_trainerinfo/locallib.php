@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * De language file for the plugin.
+ * Block Definition. The Block contains information about the course trainers.
  *
  * @package    block
  * @subpackage eledia_course_trainerinfo
@@ -24,12 +24,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['configure_eledia_trainerinfo_role_course'] = 'Rolle des Referenten in den Kursen';
-$string['configure_eledia_trainerinfo_role_course_title'] = 'Referenten Rolle';
-$string['contentsettings'] = 'Einstellungen für Inhalte anzeigen';
-$string['display_picture'] = 'Foto anzeigen';
-$string['eledia_trainerinfo:addinstance'] = 'Refernten Block hinzufügen';
-$string['eledia_trainerinfo_settings'] = 'Sichtbare Profileinstellungen';
-$string['mailstring'] = 'Kontakt per E-Mail';
-$string['pluginname'] = 'Referenten dieses Kurses';
-$string['viewablefields'] = 'Sichtbare Felder';
+defined('MOODLE_INTERNAL') || die();
+
+define('BLOCK_ELEDIA_TRAINERINFO_SHOWABLE_FIELDS', 'department,institution,city,email');

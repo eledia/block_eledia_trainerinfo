@@ -28,6 +28,9 @@ defined('MOODLE_INTERNAL') || die;
 
 if ($ADMIN->fulltree) {
     global $DB;
+
+    require_once(dirname(__FILE__).'/locallib.php');
+
     $roles = get_roles_for_contextlevels(CONTEXT_COURSE);
     list($qrypart, $params_part) = $DB->get_in_or_equal($roles);
     $sql = "SELECT * FROM {role} WHERE id $qrypart";
@@ -38,10 +41,24 @@ if ($ADMIN->fulltree) {
         $params[$role->id] = $role->localname;
     }
 
-
     $settings->add(new admin_setting_configselect('block_eledia_trainerinfo_role_course',
         get_string('configure_eledia_trainerinfo_role_course_title', 'block_eledia_trainerinfo'),
         get_string('configure_eledia_trainerinfo_role_course', 'block_eledia_trainerinfo'),
                 0,
                 $params));
+
+    // Settings for what fields should be shown.
+    $settings->add(new admin_setting_heading('block_eledia_trainerinfo_settings_h1',
+                    get_string('viewablefields', 'block_eledia_trainerinfo'),
+                    ''));
+
+    $showablefields = explode(',', BLOCK_ELEDIA_TRAINERINFO_SHOWABLE_FIELDS);
+
+    foreach ($showablefields as $sf) {
+        // Showing this field?
+        $settings->add(new admin_setting_configcheckbox('block_eledia_trainerinfo/showfield_'.$sf,
+                                    get_string($sf),
+                                    '',
+                                    true));
+    }
 }

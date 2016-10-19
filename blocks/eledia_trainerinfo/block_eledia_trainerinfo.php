@@ -32,6 +32,7 @@ class block_eledia_trainerinfo extends block_base {
      */
     public function init() {
         $this->title   = get_string('pluginname', 'block_eledia_trainerinfo');
+        $this->cfg = get_config('block_eledia_trainerinfo');
     }
 
     /**
@@ -50,6 +51,8 @@ class block_eledia_trainerinfo extends block_base {
      */
     public function get_content() {
         global $CFG, $USER, $DB, $OUTPUT, $PAGE;
+
+        require_once(dirname(__FILE__).'/locallib.php');
 
         if ($this->content !== null) {
             return $this->content;
@@ -86,21 +89,19 @@ class block_eledia_trainerinfo extends block_base {
                 }
                 $this->content->text .= '<div class="userinfo">';
                 $this->content->text .= '<strong>'.$user->firstname.' '.$user->lastname.'</strong><br />';
-                if ($user->department) {
-                    $this->content->text .= $user->department.'<br />';
-                }
-                if ($user->institution) {
-                    $this->content->text .= $user->institution.'<br />';
-                }
-                if ($user->city) {
-                    $this->content->text .= $user->city.'<br />';
-                }
-                if ($user->email) {
-                    $this->content->text .= '<a href="mailto:'.
-                            $user->email.
-                            '" target="_blank">'.
-                            get_string('mailstring', 'block_eledia_trainerinfo').
-                            '</a><br />';
+                $showablefields = explode(',', BLOCK_ELEDIA_TRAINERINFO_SHOWABLE_FIELDS);
+                foreach ($showablefields as $sf) {
+                    if(!empty($this->cfg->{'showfield_'.$sf}) AND $user->{$sf}){
+                        if ($sf == 'email') {
+                            $this->content->text .= '<a href="mailto:'.
+                                    $user->email.
+                                    '" target="_blank">'.
+                                    get_string('mailstring', 'block_eledia_trainerinfo').
+                                    '</a><br />';
+                        } else {
+                            $this->content->text .= $user->{$sf}.'<br />';
+                        }
+                    }
                 }
                 $this->content->text .= '<hr>';
                 $this->content->text .= '</div>';

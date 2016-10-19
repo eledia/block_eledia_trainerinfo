@@ -24,11 +24,12 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['eledia_trainerinfo:addinstance'] = 'add referenten block';
-$string['eledia_trainerinfo_settings'] = 'Visible user information';
-$string['configure_eledia_trainerinfo_role_course_title'] = 'Referee role';
 $string['configure_eledia_trainerinfo_role_course'] = 'Role of the referee in the courses';
+$string['configure_eledia_trainerinfo_role_course_title'] = 'Referee role';
 $string['contentsettings'] = 'Display settings for content region';
 $string['display_picture'] = 'Display picture';
+$string['eledia_trainerinfo:addinstance'] = 'add referenten block';
+$string['eledia_trainerinfo_settings'] = 'Visible user information';
 $string['mailstring'] = 'contact via e-mail';
 $string['pluginname'] = 'Referee of this Course';
+$string['viewablefields'] = 'Viewable fields';
