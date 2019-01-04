@@ -32,4 +32,5 @@ $string['eledia_trainerinfo:addinstance'] = 'add referenten block';
 $string['eledia_trainerinfo_settings'] = 'Visible user information';
 $string['mailstring'] = 'contact via e-mail';
 $string['pluginname'] = 'Referee of this Course';
+$string['privacy:metadata'] = 'The eLeDia Referee of this Course plugin does not store any personal data.';
 $string['viewablefields'] = 'Viewable fields';

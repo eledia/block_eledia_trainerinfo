@@ -15,18 +15,32 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version information.
+ * Privacy Subsystem implementation for block_eledia_trainerinfo.
  *
- * @package    block
- * @subpackage eledia_course_trainerinfo
- * @author     Benjamin Wolf <support@eledia.de>
- * @copyright  2013 eLeDia GmbH
+ * @package    block_eledia_trainerinfo
+ * @copyright  2018 Zig Tan <zig@moodle.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+namespace block_eledia_trainerinfo\privacy;
+
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2019010400;        // The current plugin version (Date: YYYYMMDDXX).
-$plugin->requires  = 2013101800;        // Requires this Moodle version.
-$plugin->component = 'block_eledia_trainerinfo'; // Full name of the plugin (used for diagnostics).
-$plugin->maturity = MATURITY_STABLE;
+/**
+ * Privacy Subsystem for block_eledia_trainerinfo implementing null_provider.
+ *
+ * @copyright  2018 Zig Tan <zig@moodle.com>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+class provider implements \core_privacy\local\metadata\null_provider {
+
+    /**
+     * Get the language string identifier with the component's language
+     * file to explain why this plugin stores no data.
+     *
+     * @return  string
+     */
+    public static function get_reason() : string {
+        return 'privacy:metadata';
+    }
+}

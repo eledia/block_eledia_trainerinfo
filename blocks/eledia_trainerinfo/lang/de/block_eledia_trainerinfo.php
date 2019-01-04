@@ -32,4 +32,5 @@ $string['eledia_trainerinfo:addinstance'] = 'Refernten Block hinzufügen';
 $string['eledia_trainerinfo_settings'] = 'Sichtbare Profileinstellungen';
 $string['mailstring'] = 'Kontakt per E-Mail';
 $string['pluginname'] = 'Referenten dieses Kurses';
+$string['privacy:metadata'] = 'Das eLeDia Referenten dieses Kurses Plugin speichert keine persönlichen Daten.';
 $string['viewablefields'] = 'Sichtbare Felder';
