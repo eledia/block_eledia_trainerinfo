@@ -48,6 +48,8 @@ class block_eledia_trainerinfo extends block_base {
      * block contents
      *
      * @return object
+     * @throws coding_exception
+     * @throws dml_exception
      */
     public function get_content() {
         global $CFG, $USER, $DB, $OUTPUT, $PAGE;
@@ -61,6 +63,8 @@ class block_eledia_trainerinfo extends block_base {
         $this->content = new stdClass;
         $this->content->text = '';
         $this->content->footer = '';
+
+        $config = get_config('block_eledia_trainerinfo');
 
         // Get course user with choosen role.
         $course = $this->page->course;
@@ -103,6 +107,25 @@ class block_eledia_trainerinfo extends block_base {
                         }
                     }
                 }
+
+                // Add extra custom fields.
+                $usedcustomfields = explode(',', get_config('block_eledia_trainerinfo', 'usedfields'));
+                profile_load_data($user);
+                foreach ($usedcustomfields as $usedcustomfield) {
+                    if (!empty($user->$usedcustomfield)) {
+                        // Formatted output of custom fields.
+                        $field_name = substr($usedcustomfield, 14);
+                        $field_rec = $DB->get_record('user_info_field', array('shortname' => $field_name));
+                        $fieldclass = 'profile_field_'.$field_rec->datatype;
+                        $field = new $fieldclass($field_rec->id, $user->id);
+                        if (!empty($config->showfieldnames)) {
+                            $this->content->text .= $field_rec->name.': '.$field->display_data().'<br />';
+                        } else {
+                            $this->content->text .= $field->display_data().'<br />';
+                        }
+                    }
+                }
+
                 $this->content->text .= '<hr>';
                 $this->content->text .= '</div>';
             }

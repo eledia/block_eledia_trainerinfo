@@ -61,4 +61,28 @@ if ($ADMIN->fulltree) {
                                     '',
                                     true));
     }
+
+    // Old settings syntax above this line.
+
+    // Which userfields should be shown?
+    $showcolname = array();
+    // Now we get the custom profile fields.
+    if ($custom_profile_fields = $DB->get_records('user_info_field', null, 'shortname ASC')) {
+        foreach ($custom_profile_fields as $cpf) {
+            $showcolname['profile_field_'.$cpf->shortname] = $cpf->name;
+        }
+    }
+    $configs[] = new admin_setting_configmultiselect('usedfields',
+        get_string('usedfields', 'block_eledia_trainerinfo'),
+        get_string('usedfields_hint', 'block_eledia_trainerinfo'),
+        array(), $showcolname);
+
+    $configs[] = new admin_setting_configcheckbox('showfieldnames',
+        get_string('showfieldnames', 'block_eledia_trainerinfo'),
+        '', false);
+
+    foreach ($configs as $config) {
+        $config->plugin = 'block_eledia_trainerinfo';
+        $settings->add($config);
+    }
 }

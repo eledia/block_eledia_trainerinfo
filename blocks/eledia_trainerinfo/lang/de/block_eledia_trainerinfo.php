@@ -27,10 +27,20 @@
 $string['configure_eledia_trainerinfo_role_course'] = 'Rolle des Referenten in den Kursen';
 $string['configure_eledia_trainerinfo_role_course_title'] = 'Referenten Rolle';
 $string['contentsettings'] = 'Einstellungen für Inhalte anzeigen';
+
 $string['display_picture'] = 'Foto anzeigen';
+
 $string['eledia_trainerinfo:addinstance'] = 'Refernten Block hinzufügen';
 $string['eledia_trainerinfo_settings'] = 'Sichtbare Profileinstellungen';
+
 $string['mailstring'] = 'Kontakt per E-Mail';
+
 $string['pluginname'] = 'Referenten dieses Kurses';
 $string['privacy:metadata'] = 'Das eLeDia Referenten dieses Kurses Plugin speichert keine persönlichen Daten.';
+
+$string['showfieldnames'] = 'Zeige die Namen der Zusätzlichen Felder';
+
+$string['usedfields'] = 'Zusätzlich anzuzeigende Felder';
+$string['usedfields_hint'] = 'Diese Felder werden zusätzlich ausgegeben.';
+
 $string['viewablefields'] = 'Sichtbare Felder';

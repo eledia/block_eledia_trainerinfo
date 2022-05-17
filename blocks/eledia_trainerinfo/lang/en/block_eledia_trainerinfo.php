@@ -27,10 +27,20 @@
 $string['configure_eledia_trainerinfo_role_course'] = 'Role of the referee in the courses';
 $string['configure_eledia_trainerinfo_role_course_title'] = 'Referee role';
 $string['contentsettings'] = 'Display settings for content region';
+
 $string['display_picture'] = 'Display picture';
+
 $string['eledia_trainerinfo:addinstance'] = 'add referenten block';
 $string['eledia_trainerinfo_settings'] = 'Visible user information';
+
 $string['mailstring'] = 'contact via e-mail';
+
 $string['pluginname'] = 'Referee of this Course';
 $string['privacy:metadata'] = 'The eLeDia Referee of this Course plugin does not store any personal data.';
+
+$string['showfieldnames'] = 'Show customfield names';
+
+$string['usedfields'] = 'Additional fields to show';
+$string['usedfields_hint'] = 'This fields will be displayed in the block.';
+
 $string['viewablefields'] = 'Viewable fields';
