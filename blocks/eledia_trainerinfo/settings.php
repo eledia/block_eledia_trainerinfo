@@ -44,7 +44,7 @@ if ($ADMIN->fulltree) {
     $settings->add(new admin_setting_configselect('block_eledia_trainerinfo_role_course',
         get_string('configure_eledia_trainerinfo_role_course_title', 'block_eledia_trainerinfo'),
         get_string('configure_eledia_trainerinfo_role_course', 'block_eledia_trainerinfo'),
-                0,
+                3,
                 $params));
 
     // Settings for what fields should be shown.
@@ -53,7 +53,6 @@ if ($ADMIN->fulltree) {
                     ''));
 
     $showablefields = explode(',', BLOCK_ELEDIA_TRAINERINFO_SHOWABLE_FIELDS);
-
     foreach ($showablefields as $sf) {
         // Showing this field?
         $settings->add(new admin_setting_configcheckbox('block_eledia_trainerinfo/showfield_'.$sf,
@@ -63,6 +62,7 @@ if ($ADMIN->fulltree) {
     }
 
     // Old settings syntax above this line.
+    $configs = array();
 
     // Which userfields should be shown?
     $showcolname = array();
@@ -72,10 +72,12 @@ if ($ADMIN->fulltree) {
             $showcolname['profile_field_'.$cpf->shortname] = $cpf->name;
         }
     }
-    $configs[] = new admin_setting_configmultiselect('usedfields',
-        get_string('usedfields', 'block_eledia_trainerinfo'),
-        get_string('usedfields_hint', 'block_eledia_trainerinfo'),
-        array(), $showcolname);
+    if (!empty($showcolname)) {
+        $configs[] = new admin_setting_configmultiselect('usedfields',
+            get_string('usedfields', 'block_eledia_trainerinfo'),
+            get_string('usedfields_hint', 'block_eledia_trainerinfo'),
+            array(), $showcolname);
+    }
 
     $configs[] = new admin_setting_configcheckbox('showfieldnames',
         get_string('showfieldnames', 'block_eledia_trainerinfo'),
